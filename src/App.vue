@@ -22,5 +22,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css');
+  @import url('~materialize-css/dist/css/materialize.min.css');
 </style>
