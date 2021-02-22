@@ -1,5 +1,5 @@
 <template>
-  <div>
+
     <div class="page-title">
       <h3>Категории</h3>
     </div>
@@ -76,5 +76,4 @@
         </div>
       </div>
     </section>
-  </div>
 </template>
