@@ -1,30 +1,52 @@
 <template>
   <ul class="sidenav app-sidenav open">
-    <li>
-      <a href="#" class="waves-effect waves-orange pointer">Счет</a>
-    </li>
-    <li>
-      <a href="#" class="waves-effect waves-orange pointer">История</a>
-    </li>
-    <li>
-      <a href="#" class="waves-effect waves-orange pointer"
-      >Планирование</a
+    <li
+      v-for="link in links"
+      :key="link.url"
+      :class="{active: $route.path === link.url}"
+    >
+      <router-link
+        active-class="active"
+        :to="link.url"
+        :exact="link.exact"
+        class="waves-effect waves-orange pointer"
       >
-    </li>
-    <li>
-      <a href="#" class="waves-effect waves-orange pointer"
-      >Новая запись</a
-      >
-    </li>
-    <li>
-      <a href="#" class="waves-effect waves-orange pointer">Категории</a>
+        {{ link.text }}
+      </router-link>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'TheSidebar'
+  name: 'TheSidebar',
+  data () {
+    return {
+      links: [
+        {
+          url: '/',
+          text: 'Счет',
+          exact: 'exact'
+        },
+        {
+          url: '/history',
+          text: 'История'
+        },
+        {
+          url: '/planning',
+          text: 'Планирование'
+        },
+        {
+          url: '/record',
+          text: 'Новая запись'
+        },
+        {
+          url: '/categories',
+          text: 'Категории'
+        }
+      ]
+    }
+  }
 }
 </script>
 
