@@ -1,9 +1,9 @@
 <template>
   <div class="app-main-layout">
-    <TheNavbar />
-    <TheSidebar />
+    <TheNavbar @toggle="isOpen = !isOpen" />
+    <TheSidebar v-model:toggle-class="isOpen" />
 
-    <main class="app-content">
+    <main class="app-content" :class="{full: !isOpen}">
       <div class="app-page">
         <div>
           <router-view />
@@ -26,6 +26,11 @@ export default {
   data () {
     return {
       isOpen: true
+    }
+  },
+  methods: {
+    toggleSb () {
+      console.log('Проверка')
     }
   },
   components: {

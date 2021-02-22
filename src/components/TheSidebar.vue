@@ -1,5 +1,5 @@
 <template>
-  <ul class="sidenav app-sidenav open">
+  <ul class="sidenav app-sidenav" :class="{open: toggleClass}">
     <li
       v-for="link in links"
       :key="link.url"
@@ -12,6 +12,7 @@
         class="waves-effect waves-orange pointer"
       >
         {{ link.text }}
+        {{ value }}
       </router-link>
     </li>
   </ul>
@@ -19,6 +20,7 @@
 
 <script>
 export default {
+  props: ['toggleClass'],
   name: 'TheSidebar',
   data () {
     return {
