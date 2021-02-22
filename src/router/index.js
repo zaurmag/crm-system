@@ -20,6 +20,15 @@ const routes = [
     },
     component: () =>
       import('../views/Login.vue')
+  },
+  {
+    path: '/categories',
+    name: 'Categories',
+    meta: {
+      layout: 'main'
+    },
+    component: () =>
+      import('../views/Categories.vue')
   }
 ]
 
