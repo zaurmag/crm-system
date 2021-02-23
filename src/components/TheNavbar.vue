@@ -14,6 +14,7 @@
             class="dropdown-trigger black-text"
             href="#"
             data-target="dropdown"
+            ref="drop"
           >
             USER NAME
             <i class="material-icons right">arrow_drop_down</i>
@@ -21,15 +22,15 @@
 
           <ul id="dropdown" class="dropdown-content">
             <li>
-              <a href="#" class="black-text">
+              <router-link to="/profile" class="black-text">
                 <i class="material-icons">account_circle</i>Профиль
-              </a>
+              </router-link>
             </li>
             <li class="divider" tabindex="-1"></li>
             <li>
-              <a href="#" class="black-text">
+              <router-link to="/login" class="black-text">
                 <i class="material-icons">assignment_return</i>Выйти
-              </a>
+              </router-link>
             </li>
           </ul>
         </li>
@@ -41,10 +42,11 @@
 <script>
 export default {
   emits: ['toggle'],
-  name: 'TheNavbar'
+  name: 'TheNavbar',
+  mounted () {
+    M.Dropdown.init(this.$refs.drop, {
+      constrainWidth: true
+    });
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
