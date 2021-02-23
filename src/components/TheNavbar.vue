@@ -45,7 +45,9 @@ export default {
   name: 'TheNavbar',
   data () {
     return {
-      date: Date()
+      date: Date(),
+      interval: null,
+      dropdown: null
     }
   },
   methods: {
@@ -55,13 +57,18 @@ export default {
     }
   },
   mounted () {
-    M.Dropdown.init(this.$refs.drop, {
+    this.dropdown = M.Dropdown.init(this.$refs.drop, {
       constrainWidth: true
-    });
-  },
-  computed: {
-    dateInterval () {
+    })
 
+    this.interval = setInterval(() => {
+        this.date = Date()
+      }, 1000)
+  },
+  beforeDestroy() {
+    clearInterval(this.interval)
+    if (this.dropdown && this.dropdown.destroy) {
+      this.dropdown.destroy
     }
   }
 }
