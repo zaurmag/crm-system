@@ -5,7 +5,7 @@
         <a href="#" @click.prevent="$emit('toggle')">
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">12.12.12</span>
+        <span class="black-text">{{ date }}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
@@ -28,9 +28,9 @@
             </li>
             <li class="divider" tabindex="-1"></li>
             <li>
-              <router-link to="/login" class="black-text">
+              <a href="#" class="black-text" @click.prevent="logout">
                 <i class="material-icons">assignment_return</i>Выйти
-              </router-link>
+              </a>
             </li>
           </ul>
         </li>
@@ -43,10 +43,26 @@
 export default {
   emits: ['toggle'],
   name: 'TheNavbar',
+  data () {
+    return {
+      date: Date()
+    }
+  },
+  methods: {
+    logout () {
+      console.log('Logout')
+      this.$router.push('/login?message=logout')
+    }
+  },
   mounted () {
     M.Dropdown.init(this.$refs.drop, {
       constrainWidth: true
     });
+  },
+  computed: {
+    dateInterval () {
+
+    }
   }
 }
 </script>
