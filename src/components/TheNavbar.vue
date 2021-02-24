@@ -5,7 +5,7 @@
         <a href="#" @click.prevent="$emit('toggle')">
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">{{ date }}</span>
+        <span class="black-text">{{ dateFormat }}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
@@ -54,6 +54,21 @@ export default {
     logout () {
       console.log('Logout')
       this.$router.push('/login?message=logout')
+    }
+  },
+  computed: {
+    dateFormat () {
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: 'numeric',
+        second: 'numeric'
+      }
+      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(this.date))
+
+      dateFilter(this.date)
     }
   },
   mounted () {
