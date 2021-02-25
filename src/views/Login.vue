@@ -9,6 +9,7 @@
               class="validate"
               v-model="email"
               @blur="eBlur"
+              :class="{invalid: eError}"
           >
           <label for="email">Email</label>
           <small v-if="eError" class="helper-text invalid">{{ eError }}</small>
@@ -20,6 +21,7 @@
               class="validate"
               v-model="password"
               @blur="pBlur"
+              :class="{invalid: pError}"
           >
           <label for="password">Пароль</label>
           <small v-if="pError" class="helper-text invalid">{{ pError }}</small>
