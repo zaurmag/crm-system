@@ -6,13 +6,10 @@
       :class="{active: $route.path === link.url}"
     >
       <router-link
-        active-class="active"
         :to="link.url"
-        :exact="link.exact"
         class="waves-effect waves-orange pointer"
       >
         {{ link.text }}
-        {{ value }}
       </router-link>
     </li>
   </ul>
@@ -27,8 +24,7 @@ export default {
       links: [
         {
           url: '/',
-          text: 'Счет',
-          exact: 'exact'
+          text: 'Счет'
         },
         {
           url: '/history',

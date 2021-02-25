@@ -67,8 +67,6 @@ export default {
         second: 'numeric'
       }
       return new Intl.DateTimeFormat('ru-RU', options).format(new Date(this.date))
-
-      dateFilter(this.date)
     }
   },
   mounted () {
@@ -77,10 +75,10 @@ export default {
     })
 
     this.interval = setInterval(() => {
-        this.date = Date()
-      }, 1000)
+      this.date = Date()
+    }, 1000)
   },
-  beforeDestroy() {
+  beforeUnmount () {
     clearInterval(this.interval)
     if (this.dropdown && this.dropdown.destroy) {
       this.dropdown.destroy
