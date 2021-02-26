@@ -48,9 +48,22 @@
 
 <script>
 import { useLoginForm } from '@/use/login-form'
+import { inject, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import messages from '@/utils/messages'
 
 export default {
   setup () {
+    onMounted (() => {
+        const message = inject('message')
+        const error = inject('error')
+        const route = useRoute()
+
+        if (messages[route.query.message]) {
+          message(messages[route.query.message])
+        }
+    })
+
     return {
       ...useLoginForm()
     }
