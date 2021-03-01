@@ -11,8 +11,9 @@ export default {
         throw error
       }
     },
-    async logout() {
+    async logout({ commit }) {
       await firebase.auth().singOut
+      commit('clearInfo')
     },
     async register ({ dispatch, commit }, {email, password, name}) {
       try {
