@@ -12,7 +12,8 @@ import 'firebase/auth'
 import 'firebase/database'
 
 firebase.initializeApp({
-  apiKey: "AIzaSyCw1IvnZbs1KfzfrObf6DOr4grRFnCFbBw",
+  // apiKey: process.env.VUE_APP_FB_APIKEY,
+  apiKey: 'AIzaSyCw1IvnZbs1KfzfrObf6DOr4grRFnCFbBw',
   authDomain: "vue-srm-417fb.firebaseapp.com",
   projectId: "vue-srm-417fb",
   storageBucket: "vue-srm-417fb.appspot.com",

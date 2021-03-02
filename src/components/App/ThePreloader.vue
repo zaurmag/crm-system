@@ -1,7 +1,7 @@
 <template>
   <div class="app-loader">
-    <div class="preloader-wrapper active" :class="colors">
-      <div class="spinner-layer">
+    <div class="preloader-wrapper active">
+      <div class="spinner-layer" :class="colors">
         <div class="circle-clipper left">
           <div class="circle"></div>
         </div><div class="gap-patch">
