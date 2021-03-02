@@ -39,8 +39,8 @@
       </div>
       <p>
         <label>
-          <input 
-            id="privacy" 
+          <input
+            id="privacy"
             type="checkbox"
             @blur="prBlur"
             v-model="privacy"

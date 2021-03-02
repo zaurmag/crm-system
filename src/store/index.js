@@ -7,7 +7,7 @@ export default createStore({
     error: null
   },
   mutations: {
-    setError(state, error) {
+    setError (state, error) {
       state.error = error
     },
     clearError (state) {
@@ -15,7 +15,11 @@ export default createStore({
     }
   },
   actions: {
-
+    async fetchFixer () {
+      const key = process.env.VUE_APP_FIXER
+      const result = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`)
+      return result.json()
+    }
   },
   getters: {
     error: s => s.error

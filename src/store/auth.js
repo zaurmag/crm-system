@@ -7,24 +7,24 @@ export default {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password)
       } catch (error) {
-        commit('setError', error, {root: true})
+        commit('setError', error, { root: true })
         throw error
       }
     },
-    async logout({ commit }) {
+    async logout ({ commit }) {
       await firebase.auth().singOut
-      commit('clearInfo')
+      commit('clearInfo', { root: true })
     },
-    async register ({ dispatch, commit }, {email, password, name}) {
+    async register ({ dispatch, commit }, { email, password, name }) {
       try {
-        const uid = await dispatch('getUid')
         await firebase.auth().createUserWithEmailAndPassword(email, password)
+        const uid = await dispatch('getUid')
         await firebase.database().ref(`/users/${uid}/info`).set({
           bill: 10000,
           name
         })
       } catch (error) {
-        commit('setError', error, {root: true})
+        commit('setError', error, { root: true })
         throw error
       }
     },

@@ -53,7 +53,7 @@ export function useRegisterForm () {
   const onSubmit = handleSubmit(async values => {
     try {
       await store.dispatch('auth/register', values)
-      router.push('/')
+      await router.push('/')
     } catch (e) {}
   })
 

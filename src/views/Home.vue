@@ -12,7 +12,9 @@
 
     <div class="row" v-else>
       <div class="col s12 m6 l4">
-        <HomeBill />
+        <HomeBill
+          :rates="currency.rates"
+        />
       </div>
 
       <div class="col s12 m6 l8">
@@ -29,7 +31,7 @@ import HomeCurrency from '@/components/HomeCurrency'
 
 export default {
   name: 'Home',
-  data() {
+  data () {
     return {
       loading: true,
       currency: null
@@ -38,6 +40,11 @@ export default {
   components: {
     HomeBill,
     HomeCurrency
+  },
+  async mounted () {
+    this.currency = await this.$store.dispatch('fetchFixer')
+    console.log(this.currency)
+    this.loading = false
   }
 }
 </script>

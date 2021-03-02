@@ -9,7 +9,7 @@ export default {
     setInfo (state, info) {
       state.info = info
     },
-    clearInfo () {
+    clearInfo (state) {
       state.info = {}
     }
   },
