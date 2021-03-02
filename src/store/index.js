@@ -12,12 +12,6 @@ export default createStore({
     },
     clearError (state) {
       state.error = null
-    },
-    setInfo (state, info) {
-      state.info = info
-    },
-    clearInfo () {
-      state.info = {}
     }
   },
   actions: {

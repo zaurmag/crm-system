@@ -4,6 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import toasts from '@/utils/toasts.js'
+import ThePreloader from '@/components/App/ThePreloader'
 import '@/assets/index.css'
 import 'materialize-css/dist/js/materialize.min'
 import firebase from 'firebase/app'
@@ -24,6 +25,7 @@ let app
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     app =  createApp(App)
+    .component('ThePreloader', ThePreloader)
     .use(toasts)
     .use(store)
     .use(router)
