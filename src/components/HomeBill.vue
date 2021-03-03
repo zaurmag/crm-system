@@ -29,8 +29,11 @@ export default {
   },
   methods: {
     getCurrensy (currency) {
-      console.log(this.base)
-      return Math.floor(this.base * this.rates[currency])
+      const result = Math.floor(this.base * this.rates[currency])
+      return new Intl.NumberFormat('ru-RU', {
+        style: 'currency',
+        currency
+      }).format(result)
     }
   }
 }

@@ -43,6 +43,7 @@
 export default {
   emits: ['toggle'],
   name: 'TheNavbar',
+  inject: ['dateFormat'],
   data () {
     return {
       date: Date(),

@@ -3,7 +3,8 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-import toasts from '@/utils/toasts.js'
+import toasts from '@/utils/toasts'
+import date from '@/utils/date'
 import ThePreloader from '@/components/App/ThePreloader'
 import '@/assets/index.css'
 import 'materialize-css/dist/js/materialize.min'
@@ -28,6 +29,7 @@ firebase.auth().onAuthStateChanged(() => {
     app = createApp(App)
       .component('ThePreloader', ThePreloader)
       .use(toasts)
+      //.use(date)
       .use(store)
       .use(router)
       .mount('#app')
