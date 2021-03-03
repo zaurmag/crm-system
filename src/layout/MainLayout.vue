@@ -1,20 +1,23 @@
 <template>
-  <div class="app-main-layout">
-    <TheNavbar @toggle="isOpen = !isOpen" />
-    <TheSidebar :toggle-class="isOpen" />
+  <div>
+    <ThePreloader v-if="loading" />
+    <div class="app-main-layout" v-else>
+      <TheNavbar @toggle="isOpen = !isOpen" />
+      <TheSidebar :toggle-class="isOpen" />
 
-    <main class="app-content" :class="{full: !isOpen}">
-      <div class="app-page">
-        <div>
-          <router-view />
+      <main class="app-content" :class="{full: !isOpen}">
+        <div class="app-page">
+          <div>
+            <router-view />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    <div class="fixed-action-btn">
-      <router-link class="btn-floating btn-large blue" to="/record">
-        <i class="large material-icons">add</i>
-      </router-link>
+      <div class="fixed-action-btn">
+        <router-link class="btn-floating btn-large blue" to="/record">
+          <i class="large material-icons">add</i>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +28,8 @@ import TheSidebar from '@/components/TheSidebar'
 export default {
   data () {
     return {
-      isOpen: true
+      isOpen: true,
+      loading: true
     }
   },
   components: {
@@ -33,9 +37,10 @@ export default {
     TheSidebar
   },
   async mounted () {
-    if (this.$store.getters.info) {
+    if (!Object.keys(this.$store.getters.info).length) {
       await this.$store.dispatch('fetchInfo')
     }
+    this.loading = false
   }
 }
 </script>
