@@ -14,7 +14,6 @@ import 'firebase/database'
 
 firebase.initializeApp({
   apiKey: process.env.VUE_APP_FB_APIKEY,
-  // apiKey: 'AIzaSyCw1IvnZbs1KfzfrObf6DOr4grRFnCFbBw',
   authDomain: 'vue-srm-417fb.firebaseapp.com',
   projectId: 'vue-srm-417fb',
   storageBucket: 'vue-srm-417fb.appspot.com',
@@ -29,7 +28,7 @@ firebase.auth().onAuthStateChanged(() => {
     app = createApp(App)
       .component('ThePreloader', ThePreloader)
       .use(toasts)
-      //.use(date)
+      .use(date)
       .use(store)
       .use(router)
       .mount('#app')

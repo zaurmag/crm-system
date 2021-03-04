@@ -59,15 +59,7 @@ export default {
   },
   computed: {
     dateFormat () {
-      const options = {
-        year: 'numeric',
-        month: 'long',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: 'numeric',
-        second: 'numeric'
-      }
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(this.date))
+      return this.$dateF(this.date, 'datetime')
     },
     name () {
       return this.$store.getters.info.name
