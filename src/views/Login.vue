@@ -54,14 +54,13 @@ import messages from '@/utils/messages'
 
 export default {
   setup () {
-    onMounted (() => {
-        const message = inject('message')
-        const error = inject('error')
-        const route = useRoute()
+    onMounted(() => {
+      const message = inject('message')
+      const route = useRoute()
 
-        if (messages[route.query.message]) {
-          message(messages[route.query.message])
-        }
+      if (messages[route.query.message]) {
+        message(messages[route.query.message])
+      }
     })
 
     return {
