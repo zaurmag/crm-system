@@ -46,13 +46,13 @@ import { onMounted } from 'vue'
 
 export default {
   name: 'CategoryCreate',
-  setup (context) {
+  setup (_, { emit }) {
     onMounted(() => {
       M.updateTextFields()
     })
 
     return {
-      ...useCategoryCreate(context)
+      ...useCategoryCreate(emit)
     }
   }
 }

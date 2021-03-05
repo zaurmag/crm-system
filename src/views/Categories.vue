@@ -5,7 +5,7 @@
     <section>
       <div class="row">
         <div class="col s12 m6">
-          <CategoryCreate @create="categoryCreate" />
+          <CategoryCreate @created="create" />
         </div>
         <div class="col s12 m6">
           <CategoryEdit />
@@ -24,7 +24,7 @@ export default {
     }
   },
   methods: {
-    categoryCreate (category) {
+    create (category) {
       this.categories.push(category)
       console.log(this.categories)
     }

@@ -3,9 +3,10 @@ import * as yup from 'yup'
 import { useStore } from 'vuex'
 import { inject } from 'vue'
 
-export function useCategoryCreate (context) {
+export function useCategoryCreate (emit) {
   const { handleSubmit, resetForm, setFieldValue } = useForm()
   const store = useStore()
+  const message = inject('message')
 
   const { value: name, errorMessage: nError, handleBlur: nBlur } = useField(
     'name',
@@ -30,10 +31,10 @@ export function useCategoryCreate (context) {
     try {
       const category = await store.dispatch('addCategory', values)
       name.value = ''
+      resetForm()
       limit.value = LIMIT_MINLENGTH
-      context.emit('create', category)
-      // const message = inject('message')
-      // message('Категория успешно создана')
+      emit('created', category)
+      message('Категория успешно создана')
     } catch (error) {}
   })
 
