@@ -3,7 +3,9 @@
       <h3>Категории</h3>
     </div>
     <section>
-      <div class="row">
+      <ThePreloader v-if="loading" />
+
+      <div class="row" v-else>
         <div class="col s12 m6">
           <CategoryCreate @created="create" />
         </div>
@@ -20,7 +22,8 @@ import CategoryEdit from '@/components/CategoryEdit'
 export default {
   data () {
     return {
-      categories: []
+      categories: [],
+      loading: true
     }
   },
   methods: {
@@ -28,6 +31,10 @@ export default {
       this.categories.push(category)
       console.log(this.categories)
     }
+  },
+  async mounted () {
+    this.categories = await this.$store.dispatch('fetchCategory')
+    this.loading = false
   },
   components: {
     CategoryCreate,
