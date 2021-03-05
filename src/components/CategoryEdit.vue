@@ -6,8 +6,12 @@
 
     <form>
       <div class="input-field">
-        <select>
-          <option>Category</option>
+        <select ref="select" v-model="current">
+          <option
+            v-for="c in cats"
+            :key="c.id"
+            :value="c.id"
+          >{{ c.name }}</option>
         </select>
         <label>Выберите категорию</label>
       </div>
@@ -37,7 +41,35 @@
 
 <script>
 export default {
-  name: 'CategoryEdit'
+  props: {
+    cats: {
+      type: Array,
+      required: true
+    }
+  },
+  name: 'CategoryEdit',
+  data () {
+    return {
+      select: null,
+      current: null
+    }
+  },
+  mounted () {
+    this.select = M.FormSelect.init(this.$refs.select)
+  },
+  beforeCreate () {
+    const { id, name, limit } = this.cats[0]
+  },
+  watch: {
+    current (id) {
+      console.log(id)
+    }
+  },
+  beforeUnmount () {
+    if (this.select && this.select.destroy) {
+      this.select.destroy()
+    }
+  }
 }
 </script>
 
