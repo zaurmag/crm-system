@@ -19,11 +19,12 @@
 <script>
 import CategoryCreate from '@/components/CategoryCreate'
 import CategoryEdit from '@/components/CategoryEdit'
+
 export default {
   data () {
     return {
-      categories: [],
-      loading: true
+      loading: true,
+      categories: []
     }
   },
   methods: {
@@ -32,8 +33,13 @@ export default {
     }
   },
   async mounted () {
-    this.categories = await this.$store.dispatch('fetchCategory')
-    this.loading = false
+    try {
+      this.categories = await this.$store.dispatch('fetchCategory')
+      this.loading = false
+    } catch (error) {
+      console.error(error)
+    }
+
   },
   components: {
     CategoryCreate,
