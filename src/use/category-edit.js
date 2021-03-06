@@ -8,6 +8,7 @@ export function useCategoryEdit (emit) {
   const store = useStore()
   const message = inject('message')
 
+  const { value: current } = useField('id')
   const { value: name, errorMessage: nError, handleBlur: nBlur } = useField(
     'name',
     yup
@@ -26,16 +27,14 @@ export function useCategoryEdit (emit) {
 
   const onSubmit = handleSubmit(async values => {
     try {
-      const category = await store.dispatch('addCategory', values)
-      name.value = ''
-      resetForm()
-      limit.value = LIMIT_MINLENGTH
-      emit('created', category)
+      await store.dispatch('editCategory', values)
+      emit('updated', values)
       message('Категория успешно обновлена')
     } catch (error) {}
   })
 
   return {
+    current,
     name,
     nError,
     nBlur,

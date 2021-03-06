@@ -10,7 +10,13 @@
           <CategoryCreate @created="create" />
         </div>
         <div class="col s12 m6">
-          <CategoryEdit :cats="categories" />
+          <CategoryEdit
+            v-if="categories.length"
+            :cats="categories"
+            @updated="updatedCategory"
+            :key="categories.length + updateCount"
+          />
+          <p v-else>Категорий пока нет</p>
         </div>
       </div>
     </section>
@@ -24,12 +30,19 @@ export default {
   data () {
     return {
       loading: true,
-      categories: []
+      categories: [],
+      updateCount: 0
     }
   },
   methods: {
     create (category) {
       this.categories.push(category)
+    },
+    updatedCategory (cat) {
+      const idx = this.categories.findIndex(c => c.id === cat.id)
+      this.categories[idx].name = cat.name
+      this.categories[idx].limit = cat.limit
+      this.updateCount++
     }
   },
   async mounted () {

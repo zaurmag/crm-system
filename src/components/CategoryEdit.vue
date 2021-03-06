@@ -61,12 +61,13 @@ export default {
       required: true
     }
   },
+  emits: ['updated'],
   name: 'CategoryEdit',
   data () {
     return {
       select: null,
       current: null,
-      ...useCategoryEdit()
+      ...useCategoryEdit(this.$emit)
     }
   },
   mounted () {
