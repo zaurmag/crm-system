@@ -7,6 +7,7 @@ import toasts from '@/utils/toasts'
 import date from '@/utils/date'
 import currency from '@/utils/currency'
 import ThePreloader from '@/components/App/ThePreloader'
+import tooltipDirective from '@/directives/tooltip.directive'
 import '@/assets/index.css'
 import 'materialize-css/dist/js/materialize.min'
 import firebase from 'firebase/app'
@@ -33,6 +34,7 @@ firebase.auth().onAuthStateChanged(() => {
       .use(currency)
       .use(store)
       .use(router)
+      .directive('tooltip', tooltipDirective)
       .mount('#app')
   }
 })
