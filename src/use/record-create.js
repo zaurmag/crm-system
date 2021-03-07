@@ -36,29 +36,31 @@ export function useRecordCreate (current) {
 
   const onSubmit = handleSubmit(async values => {
     try {
-      // const record = await store.dispatch('addRecord', values)
-      const bill = store.getters.info.bill
-
       function canCreateRecord () {
         if (values.type === 'income') {
           return true
         }
 
-        return bill >= values.amount
+        return store.getters.info.bill >= values.amount
       }
 
       if (canCreateRecord()) {
-        console.log('OK')
-      } else {
-        message(`Недостаточно средств на счете - ${values.amount - bill}`)
-      }
+        await store.dispatch('addRecord', {
+          ...values,
+          date: new Date().toJSON()
+        })
 
-      // name.value = ''
-      // resetForm()
-      // limit.value = LIMIT_MINLENGTH
-      // emit('created', category)
-      // message('Запись успешно создана')
-      // return record
+        const bill = values.type === 'income'
+          ? store.getters.info.bill + values.amount
+          : store.getters.info.bill - values.amount
+
+        await store.dispatch('updateInfo', { bill })
+
+        resetForm()
+        message('Запись успешно создана')
+      } else {
+        message(`Недостаточно средств на счете - ${values.amount - store.getters.info.bill}`)
+      }
     } catch (error) {}
   })
 

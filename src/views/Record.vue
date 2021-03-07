@@ -47,7 +47,7 @@
       <input
         id="amount"
         type="number"
-        v-model="amount"
+        v-model.number="amount"
         :class="{invalid: aError}"
       >
       <label for="amount">Сумма</label>

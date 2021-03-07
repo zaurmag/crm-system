@@ -33,7 +33,6 @@ export function useCategoryCreate (emit) {
       name.value = ''
       resetForm()
       limit.value = LIMIT_MINLENGTH
-      // M.updateTextFields()
       emit('created', category)
       message('Категория успешно создана')
     } catch (error) {}
