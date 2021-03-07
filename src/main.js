@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import toasts from '@/utils/toasts'
 import date from '@/utils/date'
+import currency from '@/utils/currency'
 import ThePreloader from '@/components/App/ThePreloader'
 import '@/assets/index.css'
 import 'materialize-css/dist/js/materialize.min'
@@ -29,6 +30,7 @@ firebase.auth().onAuthStateChanged(() => {
       .component('ThePreloader', ThePreloader)
       .use(toasts)
       .use(date)
+      .use(currency)
       .use(store)
       .use(router)
       .mount('#app')

@@ -30,10 +30,7 @@ export default {
   methods: {
     getCurrensy (currency) {
       const result = Math.floor(this.base * this.rates[currency])
-      return new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency
-      }).format(result)
+      return this.$currency(result, currency)
     }
   }
 }
