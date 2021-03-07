@@ -5,10 +5,11 @@ export default {
     async fetchCategory ({ commit, dispatch }) {
       try {
         const uid = await dispatch('auth/getUid')
-        const categories = (await firebase.database().ref(`/users/${uid}/categories`).once('value')).val()
+        const categories = (await firebase.database().ref(`/users/${uid}/categories`).once('value')).val() || {}
         return Object.keys(categories).map(key => ({ ...categories[key], id: key }))
       } catch (e) {
         commit('setError', e, { root: true })
+        throw e
       }
     },
     async addCategory ({ commit, dispatch }, { name, limit }) {
@@ -18,6 +19,7 @@ export default {
         return { name, limit, id: category.key }
       } catch (e) {
         commit('setError', e, { root: true })
+        throw e
       }
     },
     async editCategory ({ commit, dispatch }, { name, limit, id }) {
@@ -26,6 +28,7 @@ export default {
         await firebase.database().ref(`/users/${uid}/categories`).child(id).update({ name, limit })
       } catch (e) {
         commit('setError', e, { root: true })
+        throw e
       }
     }
   }

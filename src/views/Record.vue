@@ -5,6 +5,8 @@
 
   <ThePreloader v-if="loading" />
 
+  <p class="center" v-else-if="!categories.length">Категорий пока нет. <router-link to="/categories">Добавить категорию</router-link></p>
+
   <form class="form" @submit="onSubmit" v-else>
     <div class="input-field">
       <select v-model="category" ref="catSelect">
