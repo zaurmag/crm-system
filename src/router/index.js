@@ -1,11 +1,13 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import firebase from 'firebase/app'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     meta: {
-      layout: 'main'
+      layout: 'main',
+      auth: true
     },
     component: () => import('../views/Home.vue')
   },
@@ -25,7 +27,8 @@ const routes = [
     path: '/categories',
     name: 'Categories',
     meta: {
-      layout: 'main'
+      layout: 'main',
+      auth: true
     },
     component: () =>
       import('../views/Categories.vue')
@@ -34,7 +37,8 @@ const routes = [
     path: '/history',
     name: 'History',
     meta: {
-      layout: 'main'
+      layout: 'main',
+      auth: true
     },
     component: () =>
       import('../views/History.vue')
@@ -43,7 +47,8 @@ const routes = [
     path: '/planning',
     name: 'Planning',
     meta: {
-      layout: 'main'
+      layout: 'main',
+      auth: true
     },
     component: () =>
       import('../views/Planning.vue')
@@ -52,7 +57,8 @@ const routes = [
     path: '/record',
     name: 'Record',
     meta: {
-      layout: 'main'
+      layout: 'main',
+      auth: true
     },
     component: () =>
       import('../views/Record.vue')
@@ -70,7 +76,8 @@ const routes = [
     path: '/detail-record',
     name: 'DetailRecord',
     meta: {
-      layout: 'main'
+      layout: 'main',
+      auth: true
     },
     component: () =>
       import('../views/DetailRecord.vue')
@@ -79,7 +86,8 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     meta: {
-      layout: 'main'
+      layout: 'main',
+      auth: true
     },
     component: () =>
       import('../views/Profile.vue')
@@ -89,6 +97,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser
+  const requireAuth = to.matched.some(record => record.meta.auth)
+
+  if (!currentUser && requireAuth) {
+    next('/login?message=login')
+  } else if (!requireAuth && currentUser) {
+    next('/')
+  } else {
+    next()
+  }
 })
 
 export default router

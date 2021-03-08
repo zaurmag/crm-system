@@ -24,6 +24,7 @@
 <script>
 import TheNavbar from '@/components/TheNavbar'
 import TheSidebar from '@/components/TheSidebar'
+import messages from '@/utils/messages'
 
 export default {
   data () {
@@ -41,6 +42,16 @@ export default {
       await this.$store.dispatch('fetchInfo')
     }
     this.loading = false
+  },
+  computed: {
+    error () {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error (fbError) {
+      this.$error(messages[fbError.code || 'Неизвестная ошибка'])
+    }
   }
 }
 </script>

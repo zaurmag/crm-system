@@ -14,7 +14,7 @@ export default {
     }
   },
   watch: {
-    error(fbError) {
+    error (fbError) {
       this.$error(messages[fbError.code || 'Неизвестная ошибка'])
     }
   }
