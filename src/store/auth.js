@@ -3,7 +3,7 @@ import firebase from 'firebase/app'
 export default {
   namespaced: true,
   actions: {
-    async login ({ commit }, {email, password}) {
+    async login ({ commit }, { email, password }) {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password)
       } catch (error) {
@@ -12,8 +12,8 @@ export default {
       }
     },
     async logout ({ commit }) {
-      await firebase.auth().singOut
-      commit('clearInfo', { root: true })
+      await firebase.auth().signOut()
+      commit('clearInfo', null, { root: true })
     },
     async register ({ dispatch, commit }, { email, password, name }) {
       try {
