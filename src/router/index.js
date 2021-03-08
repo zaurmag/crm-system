@@ -91,6 +91,14 @@ const routes = [
     },
     component: () =>
       import('../views/Profile.vue')
+  },
+  {
+    path: '/:notFound(.*)',
+    name: 'ErrorPage',
+    meta: {
+      layout: 'empty'
+    },
+    component: () => import('../views/ErrorPage.vue')
   }
 ]
 
