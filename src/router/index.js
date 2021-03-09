@@ -73,7 +73,7 @@ const routes = [
       import('../views/Register.vue')
   },
   {
-    path: '/detail-record',
+    path: '/detail:id',
     name: 'DetailRecord',
     meta: {
       layout: 'main',
