@@ -7,6 +7,7 @@ import toasts from '@/utils/toasts'
 import date from '@/utils/date'
 import currency from '@/utils/currency'
 import ThePreloader from '@/components/App/ThePreloader'
+import Paginate from 'v-pagination-3'
 import tooltipDirective from '@/directives/tooltip.directive'
 import '@/assets/index.css'
 import 'materialize-css/dist/js/materialize.min'
@@ -29,6 +30,7 @@ firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     app = createApp(App)
       .component('ThePreloader', ThePreloader)
+      .component('Paginate', Paginate)
       .use(toasts)
       .use(date)
       .use(currency)
