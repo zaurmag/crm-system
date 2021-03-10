@@ -4,7 +4,7 @@ export default {
   data () {
     return {
       page: this.$route.query.page || 1,
-      perPage: 4,
+      perPage: 3,
       pageCount: 0,
       allItems: [],
       items: []
