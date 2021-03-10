@@ -3,5 +3,12 @@
   "form_name": "Имя",
   "form-valid_enterNameMessage": "Введите имя",
   "btn_refresh": "Обновить",
-  "message_info-updated":"Информация успешно обновлена!"
+  "message_info-updated":"Информация успешно обновлена!",
+  "menu_bill": "Счет",
+  "menu_history": "История",
+  "menu_planning": "Планирование",
+  "menu_record": "Новая запись",
+  "menu_categories": "Категории",
+  "usermenu_profile": "Профиль",
+  "usermenu_logout": "Выйти"
 }

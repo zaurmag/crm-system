@@ -3,5 +3,12 @@
   "form_name": "Name",
   "form-valid_enterNameMessage": "Enter name",
   "btn_refresh": "Refresh",
-  "message_info-updated":"Information updated successfully!"
+  "message_info-updated":"Information updated successfully!",
+  "menu_bill": "Billing",
+  "menu_history": "History",
+  "menu_planning": "Planning",
+  "menu_record": "New record",
+  "menu_categories": "Categories",
+  "usermenu_profile": "Profile",
+  "usermenu_logout": "Logout"
 }

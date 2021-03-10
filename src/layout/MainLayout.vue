@@ -3,7 +3,7 @@
     <ThePreloader v-if="loading" />
     <div class="app-main-layout" v-else>
       <TheNavbar @toggle="isOpen = !isOpen" />
-      <TheSidebar :toggle-class="isOpen" />
+      <TheSidebar :toggle-class="isOpen" :key="locale" />
 
       <main class="app-content" :class="{full: !isOpen}">
         <div class="app-page">
@@ -46,6 +46,9 @@ export default {
   computed: {
     error () {
       return this.$store.getters.error
+    },
+    locale () {
+      return this.$store.getters.info.locale
     }
   },
   watch: {

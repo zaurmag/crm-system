@@ -24,23 +24,23 @@ export default {
       links: [
         {
           url: '/',
-          text: 'Счет'
+          text: this.$localize('menu_bill')
         },
         {
           url: '/history',
-          text: 'История'
+          text: this.$localize('menu_history')
         },
         {
           url: '/planning',
-          text: 'Планирование'
+          text: this.$localize('menu_planning')
         },
         {
           url: '/record',
-          text: 'Новая запись'
+          text: this.$localize('menu_record')
         },
         {
           url: '/categories',
-          text: 'Категории'
+          text: this.$localize('menu_categories')
         }
       ]
     }

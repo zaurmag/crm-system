@@ -6,8 +6,9 @@ import { inject } from 'vue'
 export function useProfileForm () {
   const { handleSubmit, setFieldValue } = useForm()
   const store = useStore()
-  const message = inject('message')
   const localize = inject('localize')
+  const message = inject('message')
+  const localMess = localize('message_info-updated')
 
   const { value: name, errorMessage: nError, handleBlur: nBlur } = useField(
     'name',
@@ -27,8 +28,7 @@ export function useProfileForm () {
         ...values,
         locale: locale.value ? 'ru-RU' : 'en-US'
       })
-      console.log(localize('message_info-updated'))
-      message(localize('message_info-updated'))
+      message(localMess)
     } catch (error) {}
   })
 
