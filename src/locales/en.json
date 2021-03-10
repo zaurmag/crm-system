@@ -1,0 +1,7 @@
+{
+  "profileTitle": "Profile",
+  "form_name": "Name",
+  "form-valid_enterNameMessage": "Enter name",
+  "btn_refresh": "Refresh",
+  "message_info-updated":"Information updated successfully!"
+}

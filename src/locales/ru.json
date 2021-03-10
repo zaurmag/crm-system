@@ -1,0 +1,7 @@
+{
+  "profileTitle": "Профиль",
+  "form_name": "Имя",
+  "form-valid_enterNameMessage": "Введите имя",
+  "btn_refresh": "Обновить",
+  "message_info-updated":"Информация успешно обновлена!"
+}
