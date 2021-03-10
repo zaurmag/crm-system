@@ -3,15 +3,26 @@
     <h3>Профиль</h3>
   </div>
 
-  <form class="form">
+  <form class="form" @submit.prevent="onSubmit">
     <div class="input-field">
       <input
           id="description"
           type="text"
+          v-model="name"
+          :class="{invalid: nError}"
+          @blur="nBlur"
       >
       <label for="description">Имя</label>
-      <span
-          class="helper-text invalid">name</span>
+      <span class="helper-text invalid" v-if="nError">{{ nError }}</span>
+    </div>
+
+    <div class="switch">
+      <label>
+        English
+        <input type="checkbox">
+        <span class="lever"></span>
+        Русский
+      </label>
     </div>
 
     <button class="btn waves-effect waves-light" type="submit">
@@ -22,11 +33,23 @@
 </template>
 
 <script>
+import { useProfileForm } from '../use/profile-form'
+
 export default {
-  name: 'Profile'
+  name: 'Profile',
+  data () {
+    return {
+      ...useProfileForm()
+    }
+  },
+  mounted () {
+    setTimeout(() => M.updateTextFields(), 0)
+  }
 }
 </script>
 
 <style scoped>
-
+  .switch {
+    margin-bottom: 30px
+  }
 </style>

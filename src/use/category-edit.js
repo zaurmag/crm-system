@@ -4,7 +4,7 @@ import { useStore } from 'vuex'
 import { inject } from 'vue'
 
 export function useCategoryEdit (emit) {
-  const { handleSubmit, resetForm } = useForm()
+  const { handleSubmit } = useForm()
   const store = useStore()
   const message = inject('message')
 
