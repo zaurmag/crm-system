@@ -1,6 +1,9 @@
+import { useStore } from 'vuex'
+
 export default {
   install (App, format) {
     App.config.globalProperties.$dateF = function (html, format = 'date') {
+      const store = useStore()
       const options = {
         year: 'numeric',
         month: 'long',
@@ -11,7 +14,8 @@ export default {
         options.minute = 'numeric'
         options.second = 'numeric'
       }
-      return new Intl.DateTimeFormat('ru-RU', options).format(new Date(html))
+      const locale = store.getters.info.locale || 'ru-RU'
+      return new Intl.DateTimeFormat(locale, options).format(new Date(html))
     }
   }
 }

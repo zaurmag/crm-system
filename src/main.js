@@ -6,6 +6,7 @@ import store from './store'
 import toasts from '@/utils/toasts'
 import date from '@/utils/date'
 import currency from '@/utils/currency'
+import localization from '@/utils/localization'
 import ThePreloader from '@/components/App/ThePreloader'
 import Paginate from 'v-pagination-3'
 import tooltipDirective from '@/directives/tooltip.directive'
@@ -33,6 +34,7 @@ firebase.auth().onAuthStateChanged(() => {
       .component('Paginate', Paginate)
       .use(toasts)
       .use(date)
+      .use(localization)
       .use(currency)
       .use(store)
       .use(router)

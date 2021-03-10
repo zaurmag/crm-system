@@ -1,6 +1,6 @@
 <template>
   <div class="page-title">
-    <h3>Профиль</h3>
+    <h3>{{ $localize('profileTitle') }}</h3>
   </div>
 
   <form class="form" @submit.prevent="onSubmit">
@@ -19,7 +19,7 @@
     <div class="switch">
       <label>
         English
-        <input type="checkbox">
+        <input type="checkbox" v-model="locale">
         <span class="lever"></span>
         Русский
       </label>
